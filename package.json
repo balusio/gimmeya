@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev webpack-dev-server --config tasks/webpack.config.dev.js",
+    "build": "webpack -p --config tasks/webpack.config.dev.js",
     "test": "npm run test"
   },
   "repository": {
