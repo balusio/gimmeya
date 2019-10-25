@@ -3,7 +3,7 @@ const package = require('../package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry:  path.resolve(__dirname, '../app/main.jsx'),
+  entry:  path.resolve(__dirname, '../app/main.js'),
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
@@ -15,9 +15,12 @@ module.exports = {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          'eslint-loader',
-        ],
+        use: [{
+          loader: 'eslint-loader',
+          options: {
+            emitError: false,
+          },
+        }],
       },
       {
         test: /\.(js|jsx)$/,
@@ -46,23 +49,22 @@ module.exports = {
       pages: path.resolve(__dirname, '../app/pages'),
       components: path.resolve(__dirname, '../app/components'),
       containers: path.resolve(__dirname, '../app/containers'),
-      store: path.resolve(__dirname, '../app/store'),
-      stylesheets: path.resolve(__dirname, '../app/stylesheets'),
+      store: path.resolve(__dirname, '../app/store')
     },
-    extensions: ['.js'],
+    extensions: ['.js','.jsx'],
     modules: ["node_modules"],
   },
-  plugins: {
-    html: new HtmlWebpackPlugin({
+  plugins: [
+     new HtmlWebpackPlugin({
       title: package.description,
       baseUrl: process.env.BASE_URL || '/',
       minify: {
         collapseWhitespace: true,
       },
       hash: true,
-      template: './index.ejs',
+      template: path.resolve(__dirname,'index.ejs'),
     })
-  },
+  ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
