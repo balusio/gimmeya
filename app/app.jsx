@@ -5,15 +5,15 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
-import mapPage from './pages/map';
+import mapPage from './container/map/map-container';
 import loginPage from './pages/login';
 
 export default () => (
   <Router>
     <div className="container">
       <nav className="row aligner aligner--contentStart p-medium border-bottom">
-        <Link to="/map">
-          <h1>PodCaster</h1>
+        <Link to="/map?lat=-3456&lng=14556">
+          <h1>Gimme now</h1>
         </Link>
       </nav>
       <Switch>
