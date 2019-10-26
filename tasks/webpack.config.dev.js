@@ -38,9 +38,7 @@ module.exports = {
             name: '[name].[ext]',
             outputPath:'assets/images'
           }
-        }
-          
-        ]
+        }]
       }
     ],
   },
