@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 app.disable('x-powered-by');
-app.use(cors(), logger(), auth(), routes());
+app.use(express.urlencoded(), express.json(), cors(), logger(), auth(), routes());
 // eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Gimmeya App listening on port ${port}! \n @balusio was here`));
 

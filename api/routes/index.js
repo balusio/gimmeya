@@ -6,7 +6,9 @@ module.exports = () => {
   router.use('/login', login());
 
   router.use((err, req, res, next) => {
-    res.status(500).send('Something broke!');
+    res.status(500).send({
+      error: err,
+    });
     next();
   });
 

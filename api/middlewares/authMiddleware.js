@@ -20,19 +20,19 @@ module.exports = () => {
     } else {
       // Always set the Authentication, login will handle it as `Authorization `
       // then will be returned the logged user with authorization and authentication
-      axios.get(`${process.env.API_URL}/token`, {
+      axios.get(`${process.env.API_URL}tokens`, {
         params: {
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
         },
       }).then((response) => {
-        axios.defaults.gets.common.Authorization = response.access_token;
+        axios.defaults.headers.common.Authorization = response.data.access_token;
         next();
       }).catch(() => {
         res.status(500);
         res.send({ error: 'internal server error' });
       });
     }
-    return app;
   });
+  return app;
 };
