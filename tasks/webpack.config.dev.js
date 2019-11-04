@@ -1,9 +1,9 @@
 const path = require('path');
-const package = require('../package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const packageJ = require('../package.json');
 
 module.exports = {
-  entry:  path.resolve(__dirname, '../app/main.js'),
+  entry: path.resolve(__dirname, '../app/main.js'),
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
@@ -36,10 +36,10 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath:'assets/images'
-          }
-        }]
-      }
+            outputPath: 'assets/images',
+          },
+        }],
+      },
     ],
   },
   resolve: {
@@ -48,25 +48,26 @@ module.exports = {
       components: path.resolve(__dirname, '../app/components'),
       containers: path.resolve(__dirname, '../app/containers'),
       utils: path.resolve(__dirname, '../app/utils'),
-      assets: path.resolve(__dirname, '../app/assets')
+      assets: path.resolve(__dirname, '../app/assets'),
+      services: path.resolve(__dirname, '../app/services'),
     },
-    extensions: ['.js','.jsx'],
-    modules: ["node_modules"],
+    extensions: ['.js', '.jsx'],
+    modules: ['node_modules'],
   },
   plugins: [
-     new HtmlWebpackPlugin({
-      title: package.description,
+    new HtmlWebpackPlugin({
+      title: packageJ.description,
       baseUrl: process.env.BASE_URL || '/',
       minify: {
         collapseWhitespace: true,
       },
       hash: true,
-      template: path.resolve(__dirname,'index.ejs'),
-    })
+      template: path.resolve(__dirname, 'index.ejs'),
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 4200
-  }
+    port: 4200,
+  },
 };

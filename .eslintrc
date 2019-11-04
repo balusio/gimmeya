@@ -5,6 +5,13 @@
     "jsx-a11y",
     "import"
   ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config" : "tasks/webpack.config.dev.js"
+      }
+    }
+  },
   "rules": {
     "react/prefer-stateless-function": 0
   },

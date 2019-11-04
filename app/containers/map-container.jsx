@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-// eslint-disable-next-line import/no-unresolved
 import { GetUrlParams } from 'utils';
 import L from 'leaflet';
+import Container from '@material-ui/core/Container';
 
-class MapContainer extends Component {
+export default class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.mapContainer = null;
@@ -25,15 +25,14 @@ class MapContainer extends Component {
 
   componentDidUpdate(prevProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    if (this.props.location !== prevProps.location) {
+    if (this.this.props.location && this.props.location !== prevProps.location) {
       this.onRouteChanged();
     }
   }
 
   onRouteChanged() {
     // eslint-disable-next-line
-    this.paramsUrl = GetUrlParams(this.props.history.location.search);
-    console.log(this.paramsUrl);
+    this.paramsUrl = this.props.history ? GetUrlParams(this.props.history.location.search) : [-34.8903263, -56.1847601];
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -58,11 +57,19 @@ class MapContainer extends Component {
 
 
   render() {
+    const customStyles = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      padding: 0,
+      margin: 0,
+    };
+
     return (
-      <div>
-        <div id="mapContainer" />
-      </div>
+      <>
+        <Container maxWidth="xl">
+          <div id="mapContainer" style={customStyles} />
+        </Container>
+      </>
     );
   }
 }
-export default MapContainer;
