@@ -11,6 +11,7 @@ module.exports = () => {
      * otherwise will check the authorization and pass to the header
      * to be consumed on the login step
      */
+
     if (req.headers.Authorization) {
       if (req.headers.Authentication) {
         axios.defaults.gets.common.Authentication = req.header('Authentication');
