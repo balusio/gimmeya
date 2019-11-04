@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { GetUrlParams } from 'utils';
 import L from 'leaflet';
 import Container from '@material-ui/core/Container';
+import iconMap from 'assets/images/icon-map.jpg';
 
 export default class MapContainer extends Component {
   constructor(props) {
@@ -11,8 +12,14 @@ export default class MapContainer extends Component {
     this.centralMark = null;
     this.handleClicks = this.handleClicks.bind(this);
     this.paramsUrl = '';
+    this.PYicon = L.Icon.extend({
+      options: {
+        iconSize: [30, 30],
+        iconAnchor: [30, 30],
+        popupAnchor: [-15, -30],
+      },
+    });
   }
-
 
   componentDidMount() {
     this.onRouteChanged();
@@ -47,12 +54,21 @@ export default class MapContainer extends Component {
 
   setMapHandlers(mapId) {
     this.MapContainer = L.map(mapId).setView(this.paramsUrl, 13);
-    this.centralMark = L.marker([-34.8903263, -56.1847601]).addTo(this.MapContainer);
+    const MapIcon = new this.PYicon({ iconUrl: iconMap });
+    this.centralMark = L.marker(
+      [-34.8903263, -56.1847601],
+      { icon: MapIcon },
+    ).addTo(this.MapContainer);
     this.MapContainer.on('click', this.handleClicks);
   }
 
   handleClicks(e) {
-    L.marker([e.latlng.lat, e.latlng.lng]).addTo(this.MapContainer);
+    const MapIcon = new this.PYicon({ iconUrl: iconMap });
+    const mark = L.marker(
+      [e.latlng.lat, e.latlng.lng],
+      { icon: MapIcon },
+    ).addTo(this.MapContainer);
+    mark.bindPopup(`<b>Hello world!</b><br>${e.latlng.lat}`).openPopup();
   }
 
 
