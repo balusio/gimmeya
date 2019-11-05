@@ -5,9 +5,6 @@ const admin = require('../controllers/admin-controller');
 
 module.exports = () => {
   const router = express.Router();
-  router.use('/', (req, res) => {
-    res.send('MORNING');
-  });
   router.use('/login', login());
   router.use('/maps', maps());
   router.use('/admin', admin());

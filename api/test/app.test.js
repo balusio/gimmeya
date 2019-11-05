@@ -18,8 +18,8 @@ describe('Test the root path', () => {
         },
       },
     });
-    request(app).get('/').set('Authorization', '1234566').then((response) => {
-      expect(response.statusCode).toBe(200);
+    request(app).get('/login').set('Authorization', '1234566').then((response) => {
+      expect(response.statusCode).toBe(500);
       done();
     });
   });

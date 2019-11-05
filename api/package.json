@@ -12,8 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.9.0",
-    "nodemon": "^1.19.4",
     "moxios": "^0.4.0",
+    "nodemon": "^1.19.4",
+    "redis-mock": "^0.46.0",
     "superagent": "^5.1.0",
     "supertest": "^4.0.2"
   },
