@@ -1,6 +1,5 @@
-const axios = require('axios');
+axios = require('axios');
 const express = require('express');
-const redis = require("redis");
 /**
  * Loggin process: at this point the Authorization token for the app is setted by the AuthMiddleware
  * this proccess handles the login with user and password
@@ -10,29 +9,27 @@ const redis = require("redis");
  */
 module.exports = () => {
   const router = express.Router();
-  const client = redis.createClient();
   router.post('/', (req, res) => {
-    console.o
-    axios.get(`${process.env.API_URL}tokens`, {
+    console.log(req.body.coord);
+    const coords = `${req.body.coord[0]},${req.body.coord[1]}`;
+    axios.get(`${process.env.API_URL}search/restaurants`, {
       params: {
-        userName: req.body.username,
-        password: req.body.password,
+        country: 1,
+        point: coords,
+        max: 20,
+        fields: 'coordinates,deliveryTimeMaxMinutes,link,name,logo,ratingScore,topCategories,opened'
       },
     }).then((response) => {
-      const uuid = req.headers.authorization;
-      client.hset(uuid, 'authorization', response.data.access_token);
-      client.hset(uuid, 'username', req.body.username);
       res.status(200);
-      res.send({user_hash: uuid });
-      
+      res.send(response.data);
     }).catch((error) => {
-      console.log('EEERRROOR', error.config.headers);
+      console.log(error)
       if (error.code === 'INVALID_TOKEN') {
         res.status(500);
         res.send({ error: 'internal server error, try again' });
       } else {
         res.status(403);
-        res.send({ error: 'INVALID_CREDENTIALS' });
+        res.send({ error: 'Error on points' });
       }
     });
   });

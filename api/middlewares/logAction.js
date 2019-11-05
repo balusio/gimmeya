@@ -1,5 +1,6 @@
 /**
- * Async function who handles a middleware to have statics on a simple Redis, this is just an example implementation
+ * Async function who handles a middleware to have statics on a simple Redis,
+ * this is just an example implementation
  * suggest use winston on a real project
  * @param {object} req request object
  */

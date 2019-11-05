@@ -15,12 +15,15 @@ export default ({ component: Component, ...rest }) => (
       (context) => (
         // eslint-disable-next-line
         <Route { ...rest }
-          render={(props) => (
-            context.get('user') === 'jorgemanzanoweb@gmail.com'
-            // eslint-disable-next-line react/jsx-props-no-spreading
-              ? <Component {...props} />
-              : <Redirect to="/login" />
-          )}
+          render={(props) => {
+            console.log(context.get('session_hash'));
+            return (
+              context.get('session_hash')
+              // eslint-disable-next-line react/jsx-props-no-spreading
+                ? <Component {...props} />
+                : <Redirect to="/login" />
+            );
+          }}
         />
       )
     }
