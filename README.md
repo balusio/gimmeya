@@ -11,7 +11,6 @@ Gimme ya is separated in 2 parts
 1.- Front end React
 2.- Node Express API with Redis
 
-the 
 
 ## DOCKER INSTANCE 
 
