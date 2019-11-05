@@ -11,6 +11,8 @@ Gimme ya is separated in 2 parts
 1.- Front end React
 2.- Node Express API with Redis
 
+the 
+
 ## DOCKER INSTANCE 
 
-docker run --name redis_api1 -p 6379:6379 -d redis
+docker run --name redis_api -p 6379:6379 -d redis

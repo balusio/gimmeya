@@ -18,9 +18,9 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: false // set to true if you want JS source maps
+        sourceMap: false, // set to true if you want JS source maps
       }),
-    ];
+    ],
   },
   module: {
     rules: [
@@ -77,6 +77,5 @@ module.exports = {
       hash: true,
       template: path.resolve(__dirname, 'index.ejs'),
     }),
-  ]
-
+  ],
 };

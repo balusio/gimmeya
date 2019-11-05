@@ -6,13 +6,15 @@
   "scripts": {
     "postinstall": "chmod +x env_loader.sh",
     "dev": "./env_loader.sh 'nodemon -e js ./'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./env_loader.sh 'node_modules/.bin/jest --watch'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.9.0",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "moxios": "^0.4.0",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "axios": "^0.19.0",
