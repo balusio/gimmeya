@@ -5,8 +5,7 @@ const redis = require("redis");
  * Loggin process: at this point the Authorization token for the app is setted by the AuthMiddleware
  * this proccess handles the login with user and password
  * @return {object}
- * @return {property} authR the current user authorization token.
- * @return {property} authN the application token authorization now became the authentication token
+ * @listen {string} client hset the current user authorization token.
  */
 module.exports = () => {
   const router = express.Router();

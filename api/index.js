@@ -1,13 +1,21 @@
 const express = require('express');
-const routes = require('./routes');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const routes = require('./routes');
 const logger = require('./middlewares/loggerMiddleware');
 const auth = require('./middlewares/authMiddleware');
-var cookieParser = require('cookie-parser');
+;
 const app = express();
 const port = 3000;
+/**
+ * @type {Array} whitelist defined to have Cors Enabled 
+ */
+const whitelist = ['http://localhost:8080', 'http://localhost:4200'];
 
-const whitelist = ['http://localhost:3000', 'http://localhost:4200']
+/**
+ * @type {Object} corsOptions Used by cors module to have propeties setted
+ * @see https://www.npmjs.com/package/cors
+ */
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
