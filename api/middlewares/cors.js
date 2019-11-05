@@ -1,6 +1,8 @@
 const express = require('express');
 /**
- * Middleware for apply cors
+ * @deprecated Middleware for apply cors
+ * migrated to cors 
+ * @see https://www.npmjs.com/package/cors
  */
 module.exports = () => {
   const app = express();

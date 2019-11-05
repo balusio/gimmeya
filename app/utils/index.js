@@ -1,9 +1,6 @@
+
 /**
  * general Utils functions for the App
- */
-
-
-/**
  * @type { Array<obj> } urlParams
  * this method returns the elements of a url searh from react-router DOM
  * and making those object properties

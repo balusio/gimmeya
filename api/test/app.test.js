@@ -10,7 +10,7 @@ describe('Test the root path', () => {
   });
 
   test('It should response the GET method', async () => {
-    moxios.stubRequest('http://stg-api.pedidosya.com/public/v1/tokens', {
+    moxios.stubRequest(`${process.env.API_URL}tokens`, {
       status: 200,
       response: {
         data: {

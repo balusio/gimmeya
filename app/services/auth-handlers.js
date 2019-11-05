@@ -12,7 +12,7 @@ export default () => {
       // Save data to sessionStorage
       window.sessionStorage.setItem(key, value);
     },
-    get: (key, value) => window.sessionStorage.getItem(key, value),
+    get: (key) => window.sessionStorage.getItem(key),
 
     remove: (key) => {
       window.sessionStorage.removeItem(key);
