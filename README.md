@@ -29,7 +29,15 @@ Basic react app diagram:
 ## API
 
 The API follows a authMiddleware/route/Controller app.
- > the Docker Isntance is required see DOCKER INSTAnce
+ > the Docker Isntance is required see DOCKER INSTANCE
+
+The API is based on: 
+* Expressjs
+* Axios for async calls to the API
+* CORS module
+Basic api diagram:
+
+![alt text](https://github.com/balusio/gimmeya/blob/develop/app/assets/images/back-diagram.jpg)
 
 
 
